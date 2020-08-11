@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: catalogues_route
+        uri: http://localhost:9010
+        predicates:
+        - Path=/catalogue
+        - Weight=group1, 6
+#      - id: catalogues_route
+#        uri: http://localhost2:9010
+#        predicates:
+#        - Path=/catalogue
+#        - Weight=group1, 4
+      - id: customers_route
+        uri: http://localhost:9011/customers
+        predicates:
+        - Path=/customers
+
+#Actuator health check    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
