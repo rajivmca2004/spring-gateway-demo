@@ -3,17 +3,12 @@ spring:
     gateway:
       routes:
       - id: catalogues_route
-        uri: http://localhost:9010
+        uri: http://localhost:8010
         predicates:
         - Path=/catalogue
         - Weight=group1, 6
-#      - id: catalogues_route
-#        uri: http://localhost2:9010
-#        predicates:
-#        - Path=/catalogue
-#        - Weight=group1, 4
       - id: customers_route
-        uri: http://localhost:9011/customers
+        uri: http://localhost:8011
         predicates:
         - Path=/customers
 
