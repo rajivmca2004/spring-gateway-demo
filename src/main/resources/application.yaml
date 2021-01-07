@@ -1,4 +1,9 @@
 spring:
+  application:
+    name:
+  redis:
+    host: localhost
+    port: 6379    
   cloud:
     gateway:
       routes:
@@ -7,6 +12,11 @@ spring:
         predicates:
         - Path=/catalogue
         - Weight=group1, 6
+        filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 2
+            redis-rate-limiter.burstCapacity: 4
       - id: customers_route
         uri: http://localhost:8011
         predicates:
