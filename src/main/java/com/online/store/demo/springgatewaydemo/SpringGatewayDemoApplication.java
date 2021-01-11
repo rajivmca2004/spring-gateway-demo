@@ -14,6 +14,8 @@ public class SpringGatewayDemoApplication {
 		SpringApplication.run(SpringGatewayDemoApplication.class, args);
 	}
 	
+	//It requires only for Rate limiting feature
+	
 	@Bean
     KeyResolver userKeyResolver() {
         return exchange -> Mono.just("1");
